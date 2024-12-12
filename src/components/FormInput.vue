@@ -26,7 +26,7 @@ defineProps({
 
 .form-input {
   margin-bottom: 1rem;
-  color: #adb5bd;
+  color: var(--color_adb5bd);
 }
 .form-input__label {
   display: inline-block;
@@ -40,15 +40,15 @@ defineProps({
   height: 2.5rem;
   padding: 0.4rem 0.8rem;
   background-color: transparent;
-  border: 1px solid #495057;
+  border: 1px solid var(--color_495057);
   border-radius: 0.25rem;
   transition: all 0.15s ease-in-out;
-  color: #ced4da;
+  color: var(--color_ced4da);
   outline: none;
 }
 .form-input__input:focus {
-  border-color: #65caec;
-  color: #ced4da;
-  background: #42484f;
+  border-color: var(--color_65caec);
+  color: var(--color_ced4da);
+  background: var(--color_42484f);
 }
 </style>

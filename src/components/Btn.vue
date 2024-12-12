@@ -35,7 +35,7 @@ defineProps({
   line-height: 1.5;
   border-radius: 0.3rem;
   font-weight: 400;
-  color: #f8f9fa;
+  color: var(--color_f8f9fa);
   cursor: pointer;
   box-shadow: none;
   border: none;
@@ -49,11 +49,11 @@ defineProps({
 }
 
 .btn--default, .btn--edit {
-  background-color: #4dc3ff;
+  background-color: var(--color_4dc3ff);
 }
 
 .btn--default:hover, .btn--edit:hover {
-  background-color: #1791ba;
+  background-color: var(--color_1791ba);
 }
 
 .btn--delete {
@@ -61,24 +61,24 @@ defineProps({
 }
 
 .btn--delete:hover {
-  background-color: #ed2939;
+  background-color: var(--color_darkred);
 }
 
 .btn--add {
-  background-color: #1fa620;
+  background-color: var(--color_1fa620);
 }
 
 .btn--add:hover {
-  background-color: #178817;
+  background-color: var(--color_darkgreen);
 }
 
 .btn--close {
   background-color: transparent;
-  color: #adb5bd;
+  color: var(--color_adb5bd);
 }
 
 .btn--close:hover {
   background-color: transparent;
-  color: #8f979e;
+  color: var(--color_8f979e);
 }
 </style>

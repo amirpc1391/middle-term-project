@@ -60,18 +60,18 @@ import addIcon from '@/assets/add.png'
 }
 
 .transaction-section__cell {
-  border: 1px solid #495057;
+  border: 1px solid var(--color_495057);
   padding: 0.75rem;
   font-size: 0.9rem;
 }
 
 .transaction-section__thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #495057;
+  border-bottom: 2px solid var(--color_495057);
 }
 
 .transaction-section__tbody tr:hover {
-  color: #adb5bd;
+  color: var(--color_adb5bd);
   background-color: rgba(0, 0, 0, 0.075);
 }
 
@@ -81,7 +81,7 @@ import addIcon from '@/assets/add.png'
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #495057;
+  border: 1px solid var(--color_495057);
 }
 
 .transaction-section__content {
@@ -92,7 +92,7 @@ import addIcon from '@/assets/add.png'
 }
 
 .transaction-section__title {
-  color: #1791ba;
+  color: var(--color_1791ba);
   text-transform: capitalize;
   font-size: 1.5rem;
 }
@@ -102,7 +102,7 @@ import addIcon from '@/assets/add.png'
 }
 
 .transaction-section__cell-empty{
-  border: 1px solid #495057;
+  border: 1px solid var(--color_495057);
   padding: 0.75rem;
   font-size: .9rem;
 }

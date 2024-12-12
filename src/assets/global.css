@@ -68,6 +68,19 @@ html {
     --color_212529: #212529;
     --color_1791ba: #1791ba;
     --color_dee2e6: #dee2e6;
+    --color_darkgreen: darkgreen;
+    --color_1fa620: #1fa620;
+    --color_darkred: darkred;
+    --color_495057: #495057;
+    --color_adb5bd: #adb5bd;
+    --color_343a40: #343a40;
+    --color_42484f: #42484f;
+    --color_ced4da: #ced4da;
+    --color_65caec: #65caec;
+
+    --color_4dc3ff: #4dc3ff;
+    --color_f8f9fa: #f8f9fa;
+    --color_8f979e: #8f979e;
 }
 
 * {

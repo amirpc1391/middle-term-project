@@ -28,7 +28,7 @@ import formInput from "@/components/FormInput.vue";
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #343a40;
+  background-color: var(--color_343a40);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
@@ -40,10 +40,10 @@ import formInput from "@/components/FormInput.vue";
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #dee2e6;
-  border-bottom-color: #495057;
+  border-bottom: 1px solid var(--color_dee2e6);
+  border-bottom-color: var(--color_495057);
   padding: 1.5rem;
-  color: #adb5bd;
+  color: var(--color_adb5bd);
 }
 .modal__body {
   padding: 1.5rem;
@@ -53,7 +53,7 @@ import formInput from "@/components/FormInput.vue";
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-top: 1px solid #495057;
+  border-top: 1px solid var(--color_495057);
   padding: 1rem 1.5rem;
 }
 </style>

@@ -39,7 +39,7 @@ const isActiveNotification = ref(false)
 .main {
   padding: 15px;
   margin: 15px 0;
-  background-color: #2a2f34;
+  background-color: var(--color_2a2f34);
   border-radius: 8px;
 }
 .modal-section{
@@ -60,7 +60,7 @@ const isActiveNotification = ref(false)
 }
 .report-section{
   display: flex;
-  background-color: #2a2f34;
+  background-color: var(--color_2a2f34);
   border-radius: 8px;
   color: var(--color_dee2e6);
   padding: 1.25rem;
@@ -79,13 +79,13 @@ display: flex;
   font-size: 1.2rem;
 }
 .report-section__balance-title{
-  color: #1791ba;
+  color: var(--color_1791ba);
 }
 .report-section__incomes-title{
-  color: darkgreen;
+  color: var(--color_darkgreen);
 }
 .report-section__expenses-title{
-  color: darkred;
+  color: var(--color_darkred);
 }
 .notification-section{
   display: flex;

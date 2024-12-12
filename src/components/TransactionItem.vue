@@ -23,7 +23,7 @@ const colorPrice= ref("red")
 
 <style scoped>
 .transaction-section__cell {
-  border: 1px solid #495057;
+  border: 1px solid var(--color_495057);
   padding: 0.75rem;
   font-size: .9rem;
 }
@@ -32,9 +32,9 @@ const colorPrice= ref("red")
   gap: .3rem;
 }
 .transaction-section__cell--green{
-  color: darkgreen;
+  color: var(--color_darkgreen);
 }
 .transaction-section__cell--red{
-  color: darkred;
+  color: var(--color_darkred);
 }
 </style>

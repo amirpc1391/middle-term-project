@@ -59,14 +59,14 @@ defineProps({
 }
 
 .notification--notice {
-  background-color: #1791ba;
+  background-color: var(--color_1791ba);
 }
 
 .notification--success {
-  background-color: darkgreen;
+  background-color: var(--color_darkgreen);
 }
 
 .notification--danger {
-  background-color: darkred;
+  background-color: var(--color_darkred);
 }
 </style>
