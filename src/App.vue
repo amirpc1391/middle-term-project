@@ -59,14 +59,6 @@ const isActiveNotification = ref(false)
   padding: 5rem;
 }
 .report-section{
-  //display: flex;
-  //background-color: var(--color_2a2f34);
-  //border-radius: 8px;
-  //color: var(--color_dee2e6);
-  //padding: 1.25rem;
-  //justify-content: space-between;
-  //align-items: center;
-
   display: grid;
   justify-items: flex-start;
   grid-template-columns: repeat(3, 1fr);
@@ -97,6 +89,7 @@ display: flex;
   color: var(--color_darkred);
 }
 .notification-section{
+  max-width: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -104,7 +97,10 @@ display: flex;
   align-items: center;
   width: 100%;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   visibility: hidden;
   opacity: 0;
   transition: all .2s ease-in-out;

@@ -45,7 +45,7 @@ defineProps({
   gap: 0.4rem;
 }
 .notification__img-icon {
- width: 60px;
+ width: 3.8rem;
 }
 
 .notification__title {
