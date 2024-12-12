@@ -77,7 +77,6 @@ html {
     --color_42484f: #42484f;
     --color_ced4da: #ced4da;
     --color_65caec: #65caec;
-
     --color_4dc3ff: #4dc3ff;
     --color_f8f9fa: #f8f9fa;
     --color_8f979e: #8f979e;
@@ -94,7 +93,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1140px;
     padding: 0 15px;
     margin: 0 auto;
 }

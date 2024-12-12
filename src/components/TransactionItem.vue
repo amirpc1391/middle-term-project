@@ -14,9 +14,11 @@ const colorPrice= ref("red")
     <td class="transaction-section__cell">income</td>
     <td :class="`transaction-section__cell transaction-section__cell--${colorPrice}`">20,000 Toman</td>
     <td class="transaction-section__cell">buy a iceCream</td>
-    <td class="transaction-section__cell transaction-section__cell--btn flex-center">
-      <Btn type="edit" label="Edit" :img-icon="editIcon"/>
-      <Btn type="delete" label="Delete" :img-icon="deleteIcon"/>
+    <td class="transaction-section__cell">
+      <div class="transaction-section__cell-btn flex-center">
+        <Btn type="edit" label="Edit" :img-icon="editIcon"/>
+        <Btn type="delete" label="Delete" :img-icon="deleteIcon"/>
+      </div>
     </td>
   </tr>
 </template>
@@ -26,9 +28,10 @@ const colorPrice= ref("red")
   border: 1px solid var(--color_495057);
   padding: 0.75rem;
   font-size: .9rem;
+  line-height: 1.4;
 }
 
-.transaction-section__cell--btn {
+.transaction-section__cell-btn {
   gap: .3rem;
 }
 .transaction-section__cell--green{

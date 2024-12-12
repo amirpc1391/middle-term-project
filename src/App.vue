@@ -59,13 +59,22 @@ const isActiveNotification = ref(false)
   padding: 5rem;
 }
 .report-section{
-  display: flex;
+  //display: flex;
+  //background-color: var(--color_2a2f34);
+  //border-radius: 8px;
+  //color: var(--color_dee2e6);
+  //padding: 1.25rem;
+  //justify-content: space-between;
+  //align-items: center;
+
+  display: grid;
+  justify-items: flex-start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .8rem .2rem;
   background-color: var(--color_2a2f34);
   border-radius: 8px;
   color: var(--color_dee2e6);
   padding: 1.25rem;
-  justify-content: space-between;
-  align-items: center;
 }
 .report-section__incomes,.report-section__expenses,.report-section__balance{
 display: flex;

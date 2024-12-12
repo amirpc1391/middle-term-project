@@ -63,6 +63,7 @@ import addIcon from '@/assets/add.png'
   border: 1px solid var(--color_495057);
   padding: 0.75rem;
   font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .transaction-section__thead th {
