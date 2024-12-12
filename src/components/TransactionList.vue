@@ -19,12 +19,13 @@ import addIcon from '@/assets/add.png'
       <tr class="transaction-section__row">
         <th class="transaction-section__cell">Number</th>
         <th class="transaction-section__cell">Type of Transaction</th>
-        <th class="transaction-section__cell">Cost</th>
-        <th class="transaction-section__cell">Message</th>
+        <th class="transaction-section__cell">Price</th>
+        <th class="transaction-section__cell">Description</th>
         <th class="transaction-section__cell text-center">Action</th>
       </tr>
       </thead>
-      <tbody class="transaction-section__tbody">
+<!--      when exists any transaction-->
+      <tbody v-if="true" class="transaction-section__tbody">
       <TransactionItem/>
       <TransactionItem/>
       <TransactionItem/>
@@ -32,6 +33,13 @@ import addIcon from '@/assets/add.png'
       <TransactionItem/>
       <TransactionItem/>
       </tbody>
+      <!--      when not exists any transaction-->
+      <tbody v-else class="transaction-section__tbody">
+      <tr class="transaction-section__item">
+        <td class="transaction-section__cell-empty" colspan="5">Any transaction no exists ...</td>
+      </tr>
+      </tbody>
+
     </table>
   </div>
 </template>
@@ -92,4 +100,11 @@ import addIcon from '@/assets/add.png'
   width: 1.8rem;
   height: 1.8rem;
 }
+
+.transaction-section__cell-empty{
+  border: 1px solid #495057;
+  padding: 0.75rem;
+  font-size: .9rem;
+}
+
 </style>

@@ -11,8 +11,8 @@ import formInput from "@/components/FormInput.vue";
     </div>
     <div class="modal__body">
       <form>
-        <formInput input-id="const" label="const:"/>
-        <formInput input-id="message" label="message:"/>
+        <formInput input-id="price" label="price:"/>
+        <formInput input-id="description" label="description:"/>
       </form>
     </div>
     <div class="modal__footer">

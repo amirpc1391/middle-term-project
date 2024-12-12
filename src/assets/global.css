@@ -77,7 +77,7 @@ html {
 }
 
 body {
-    background-color: #181b1e;
+    background-color:var(--color_181b1e);
 }
 
 .container {
@@ -86,7 +86,7 @@ body {
     margin: 0 auto;
 }
 
-/*helper class*/
+/*helper classes*/
 .flex-center {
     display: flex;
     justify-content: center;
