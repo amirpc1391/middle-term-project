@@ -69,4 +69,28 @@ defineProps({
 .notification--danger {
   background-color: var(--color_darkred);
 }
+
+.notification-section {
+  max-width: 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+  padding: .6rem;
+}
+
+.notification-section--active {
+  visibility: visible;
+  opacity: 1;
+}
 </style>

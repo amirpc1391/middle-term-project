@@ -1,24 +1,71 @@
 <script setup>
+
 import Btn from "@/components/Btn.vue";
-import formInput from "@/components/FormInput.vue";
+
+const props = defineProps( {
+
+  title : {
+    type : String ,
+    default : "Modal Name"
+  } ,
+  labelActionSubmit : {
+    type : String ,
+    default : 'submit'
+  } ,
+  typeActionSubmit : {
+    type : String ,
+    default : 'default'
+  } ,
+  action : {
+    type : Function ,
+    default : function ( e )
+    {
+      console.log( e )
+    }
+  }
+
+
+} )
+
+const emits = defineEmits( [ 'close' ] )
+
 </script>
 
 <template>
-  <div class="modal">
-    <div class="modal__header">
-      <h5 class="modal__title">Add transaction</h5>
-      <Btn label="×" type="close" style="font-size: 1.5rem;"/>
+
+  <div>
+
+    <div class="modal">
+
+      <div class="modal__header">
+
+        <h5 class="modal__title">
+          {{ props.title }}
+        </h5>
+        <Btn label="×" type="close" style="font-size: 1.5rem;" @click="() => emits('close')"/>
+
+      </div>
+
+      <div class="modal__body">
+
+        <form>
+
+          <slot/>
+
+        </form>
+
+      </div>
+
+      <div class="modal__footer">
+
+        <Btn :type="props.typeActionSubmit" :label="props.labelActionSubmit" @click="props.action"/>
+
+      </div>
+
     </div>
-    <div class="modal__body">
-      <form>
-        <formInput input-id="price" label="price:"/>
-        <formInput input-id="description" label="description:"/>
-      </form>
-    </div>
-    <div class="modal__footer">
-      <Btn type="edit" label="Add"/>
-    </div>
+
   </div>
+
 </template>
 
 <style scoped>
@@ -45,6 +92,7 @@ import formInput from "@/components/FormInput.vue";
   padding: 1.5rem;
   color: var(--color_adb5bd);
 }
+
 .modal__body {
   padding: 1.5rem;
 }
@@ -55,5 +103,23 @@ import formInput from "@/components/FormInput.vue";
   justify-content: flex-end;
   border-top: 1px solid var(--color_495057);
   padding: 1rem 1.5rem;
+}
+
+.modal-section {
+  width: 100%;
+  position: relative;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+}
+
+.modal-section--active {
+  visibility: visible;
+  opacity: 1;
+  padding: 5rem;
 }
 </style>

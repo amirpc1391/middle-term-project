@@ -1,37 +1,119 @@
 <script setup>
 import TransactionList from './components/TransactionList.vue'
-import Modal from './components/Modal.vue'
-import Notification from './components/Notification.vue'
-import {ref} from "vue";
+import transactions_saves from "@/transactions.json";
+import { computed , onMounted , reactive , watch } from "vue";
+import Notification from "@/components/Notification.vue";
 
+let transactions = reactive( transactions_saves )
+let notification = reactive( {
+  title : 'successfully' ,
+  type : 'success' ,
+  active : false ,
+  message : ''
+} )
 
-const isActiveModal = ref(false)
-const isActiveNotification = ref(false)
+let SendNotification = ( message , type = 'success' , title = 'successfully' ) =>
+{
+  notification.active = true
+  notification.message = message
+  notification.type = type
+  notification.title = title
+  setTimeout( () =>
+  {
+    notification.active = false
+  } , 3000 )
+}
+
+const calculator = computed( () =>
+{
+  let Balance = 0;
+  let Incomes = 0;
+  let Expenses = 0;
+
+  if ( transactions.length > 0 )
+  {
+
+    for ( let i = 0 ; i < transactions.length ; i++ )
+    {
+
+      let transaction = transactions[ i ]
+
+      if ( transaction.type === 'income' )
+      {
+        Balance += transactions[ i ].price;
+      }
+      if ( transaction.type === 'cost' )
+      {
+        Incomes += transactions[ i ].price;
+      }
+
+    }
+
+    Expenses = Balance - Incomes
+
+  }
+
+  return {
+    Balance : Balance ,
+    Incomes : Incomes ,
+    Expenses : Expenses
+  };
+
+} )
+
+watch( calculator , () =>
+{
+
+  if ( calculator.value.Expenses < 0 )
+  {
+    console.log( 'Warning Balance!' )
+  }
+
+} )
+
+onMounted( () =>
+{
+
+  // console.log( 'برنامه ردیابی بودجه بارگزاری شد.' )
+  SendNotification( 'برنامه ردیابی بودجه بارگزاری شد.' )
+
+} )
 
 </script>
 
 <template>
   <div class="container">
+
     <div class="main">
-      <TransactionList/>
+      <TransactionList :transactions="transactions"/>
     </div>
-    <div class="report-section">
-      <div class="report-section__balance"><span class="report-section__balance-title">Total Balance: </span>500,000 Toman</div>
-      <div class="report-section__incomes"><span class="report-section__incomes-title">Total Incomes: </span>1,500,000 Toman</div>
-      <div class="report-section__expenses"><span class="report-section__expenses-title">Total Expenses: </span>-1,000,000 Toman</div>
+
+    <div class="report-section" @click="isActiveNotification=true">
+      <div class="report-section__balance"><span class="report-section__balance-title">
+        Total Balance:
+      </span>
+        {{ calculator.Balance.toLocaleString() }}
+        Toman
+      </div>
+      <div class="report-section__incomes"><span class="report-section__incomes-title">
+        Total Incomes:
+      </span>
+        {{ calculator.Incomes.toLocaleString() }}
+        Toman
+      </div>
+      <div class="report-section__expenses"><span class="report-section__expenses-title">
+        Total Expenses:
+      </span>
+        {{ calculator.Expenses.toLocaleString() }}
+        Toman
+      </div>
     </div>
   </div>
 
-  <div :class="{'modal-section': true ,'modal-section--active':isActiveModal}">
-    <Modal/>
-  </div>
-
-  <div :class="{'notification-section':true, 'notification-section--active':isActiveNotification}">
-<!--    for type props in Notification you can use danger , success , notice-->
-    <Notification  title="success" type="success">
-      Budget Tracker app loaded.<br> You can add your first transaction.
-    </Notification>
-  </div>
+  <Notification :title="notification.title" :type="notification.type" @click="notification.active = false"
+                :class="{'notification-section':true, 'notification-section--active':notification.active}">
+    {{ notification.message }}
+  </Notification>
 
 </template>
 
@@ -42,23 +124,9 @@ const isActiveNotification = ref(false)
   background-color: var(--color_2a2f34);
   border-radius: 8px;
 }
-.modal-section{
-  width: 100%;
-  position: fixed;
-  inset: 0;
-  visibility: hidden;
-  opacity: 0;
-  transition: all .2s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 3rem;
-}
-.modal-section--active{
-  visibility: visible;
-  opacity: 1;
-  padding: 5rem;
-}
-.report-section{
+
+
+.report-section {
   display: grid;
   justify-items: flex-start;
   grid-template-columns: repeat(3, 1fr);
@@ -68,46 +136,30 @@ const isActiveNotification = ref(false)
   color: var(--color_dee2e6);
   padding: 1.25rem;
 }
-.report-section__incomes,.report-section__expenses,.report-section__balance{
-display: flex;
+
+.report-section__incomes, .report-section__expenses, .report-section__balance {
+  display: flex;
   gap: .5rem;
   justify-content: center;
   align-items: baseline;
 }
 
-.report-section__balance-title,.report-section__incomes-title,.report-section__expenses-title{
+.report-section__balance-title, .report-section__incomes-title, .report-section__expenses-title {
   font-weight: 500;
   font-size: 1.2rem;
 }
-.report-section__balance-title{
+
+.report-section__balance-title {
   color: var(--color_1791ba);
 }
-.report-section__incomes-title{
+
+.report-section__incomes-title {
   color: var(--color_darkgreen);
 }
-.report-section__expenses-title{
+
+.report-section__expenses-title {
   color: var(--color_darkred);
 }
-.notification-section{
-  max-width: 22rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1rem;
-  align-items: center;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  visibility: hidden;
-  opacity: 0;
-  transition: all .2s ease-in-out;
-  padding: .6rem;
-}
-.notification-section--active{
-  visibility: visible;
-  opacity: 1;
-}
+
+
 </style>

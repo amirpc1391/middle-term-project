@@ -1,23 +1,35 @@
 <script setup>
-defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  inputId: {
-    type: String,
-    required: true,
-  },
-})
+import { computed , onMounted , ref , watch } from "vue";
+
+const props = defineProps( {
+  label : {
+    type : String ,
+    required : true ,
+  } ,
+  id : {
+    type : String ,
+    required : true ,
+  }
+} )
+const emit = defineEmits( [ 'change' ] )
+
+let input = ref( props.value )
+
+watch( input , () =>
+{
+  emit( 'change' , input.value )
+} )
+
 </script>
 
 <template>
   <div class="form-input">
-    <label :for="inputId" class="form-input__label">{{ label }}</label>
+    <label :for="props.id" class="form-input__label">{{ props.label }}</label>
     <input
         type="text"
-        :id="inputId"
+        :id="props.id"
         class="form-input__input"
+        v-model="input"
     />
   </div>
 </template>
@@ -28,11 +40,13 @@ defineProps({
   margin-bottom: 1rem;
   color: var(--color_adb5bd);
 }
+
 .form-input__label {
   display: inline-block;
   padding: 0.4rem 0;
   line-height: 1.5;
 }
+
 .form-input__input {
   display: block;
   width: 100%;
@@ -46,6 +60,7 @@ defineProps({
   color: var(--color_ced4da);
   outline: none;
 }
+
 .form-input__input:focus {
   border-color: var(--color_65caec);
   color: var(--color_ced4da);

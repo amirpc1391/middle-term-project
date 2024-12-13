@@ -2,22 +2,69 @@
 import Btn from './Btn.vue'
 import editIcon from '@/assets/editing.png'
 import deleteIcon from '@/assets/delete.png'
-import {ref} from "vue"
+import { onMounted , ref } from "vue"
 
 // color green for income and red for expenses
-const colorPrice= ref("red")
+const colorPrice = ref( "red" )
+
+const props = defineProps( {
+
+  id : {
+    required : true ,
+    type : Number
+  } ,
+  count : {
+    type : Number ,
+    required : true
+  } ,
+  type : {
+    type : String ,
+    required : true
+  } ,
+  price : {
+    type : Number ,
+    required : true
+  } ,
+  description : {
+    type : String ,
+    required : true
+  }
+
+} );
+
+onMounted( () =>
+{
+
+  if ( props.type === 'income' )
+  {
+    colorPrice.value = 'green';
+  }
+
+} )
+
+const emits = defineEmits( [ 'delete' , 'edit' ] )
+
 </script>
 
 <template>
   <tr class="transaction-section__item">
-    <td class="transaction-section__cell">1</td>
-    <td class="transaction-section__cell">income</td>
-    <td :class="`transaction-section__cell transaction-section__cell--${colorPrice}`">20,000 Toman</td>
-    <td class="transaction-section__cell">buy a iceCream</td>
+    <td class="transaction-section__cell">
+      {{ props.count }}
+    </td>
+    <td class="transaction-section__cell">
+      {{ props.type }}
+    </td>
+    <td :class="`transaction-section__cell transaction-section__cell--${colorPrice}`">
+      {{ props.price.toLocaleString() }}
+      Toman
+    </td>
+    <td class="transaction-section__cell">
+      {{ props.description }}
+    </td>
     <td class="transaction-section__cell">
       <div class="transaction-section__cell-btn flex-center">
-        <Btn type="edit" label="Edit" :img-icon="editIcon"/>
-        <Btn type="delete" label="Delete" :img-icon="deleteIcon"/>
+        <Btn type="edit" label="Edit" :img-icon="editIcon" @click="() => emits('edit',{id:id})"/>
+        <Btn type="delete" label="Delete" :img-icon="deleteIcon" @click="() => emits('delete',{id:props.id})"/>
       </div>
     </td>
   </tr>
@@ -34,10 +81,12 @@ const colorPrice= ref("red")
 .transaction-section__cell-btn {
   gap: .3rem;
 }
-.transaction-section__cell--green{
+
+.transaction-section__cell--green {
   color: var(--color_darkgreen);
 }
-.transaction-section__cell--red{
+
+.transaction-section__cell--red {
   color: var(--color_darkred);
 }
 </style>

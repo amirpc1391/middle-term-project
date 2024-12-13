@@ -1,19 +1,19 @@
 <script setup>
 
-defineProps({
-  type: {
-    type: String,
-    default: 'default',
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  imgIcon: {
-    type: String,
-    default: '',
-  },
-});
+defineProps( {
+  type : {
+    type : String ,
+    default : 'default' ,
+  } ,
+  label : {
+    type : String ,
+    required : true ,
+  } ,
+  imgIcon : {
+    type : String ,
+    default : '' ,
+  } ,
+} );
 </script>
 
 <template>
