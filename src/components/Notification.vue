@@ -8,10 +8,6 @@ defineProps({
     type: String,
     required: true,
   },
-  // description: {
-  //   type: String,
-  //   required: true,
-  // },
   isActiveNotification: {
     type: Boolean,
     required: true,

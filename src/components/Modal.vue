@@ -12,6 +12,7 @@ const props=defineProps({
     required: true,
   }
 })
+//computing text button and title text of modal from props.modalStatusEdit
 const modalStatusComputing =computed(()=>{
   if (props.modalStatusEdit){
     return "Edit"
@@ -19,6 +20,7 @@ const modalStatusComputing =computed(()=>{
     return "Add"
   }
 })
+//define model for v-model inputs
 const priceModel=defineModel("price")
 const descriptionModel=defineModel("description")
 </script>

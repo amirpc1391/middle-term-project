@@ -10,10 +10,7 @@ defineProps({
     required: true
   }
 })
-const x =()=>{
 
-  console.log(true)
-}
 </script>
 
 <template>

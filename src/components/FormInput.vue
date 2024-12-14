@@ -9,6 +9,7 @@ defineProps({
     required: true,
   }
 })
+//define model for v-model input
 const model =defineModel()
 </script>
 
