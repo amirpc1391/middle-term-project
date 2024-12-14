@@ -14,10 +14,11 @@ defineProps({
     default: '',
   },
 });
+
 </script>
 
 <template>
-  <button :class="['btn', `btn--${type}`]">
+  <button :class="['btn', `btn--${type}`]" @click="$emit('click-btn')">
     <img v-if="imgIcon" :src="imgIcon" :alt="label" class="btn__img"/>
     {{ label }}
   </button>

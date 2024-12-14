@@ -2,17 +2,28 @@
 import TransactionItem from './TransactionItem.vue'
 import Btn from "@/components/Btn.vue";
 import addIcon from '@/assets/add.png'
+
+
+defineProps({
+  transactionsList: {
+    type: Array,
+    required: true
+  }
+})
+const x =()=>{
+
+  console.log(true)
+}
 </script>
 
 <template>
   <div class="transaction-section">
-
     <div class="transaction-section__header">
       <div class="transaction-section__content">
         <img class="transaction-section__img" src="../assets/money.png" alt="money">
         <h1 class="transaction-section__title">list of transactions</h1>
       </div>
-      <btn :img-icon="addIcon" type="add" label="Add"/>
+      <btn :img-icon="addIcon" type="add" label="Add" @click-btn="$emit('modal-add-transaction')"/>
     </div>
     <table class="transaction-section__table">
       <thead class="transaction-section__thead">
@@ -24,14 +35,9 @@ import addIcon from '@/assets/add.png'
         <th class="transaction-section__cell text-center">Action</th>
       </tr>
       </thead>
-<!--      when exists any transaction-->
-      <tbody v-if="true" class="transaction-section__tbody">
-      <TransactionItem/>
-      <TransactionItem/>
-      <TransactionItem/>
-      <TransactionItem/>
-      <TransactionItem/>
-      <TransactionItem/>
+      <!--      when exists any transaction-->
+      <tbody v-if="transactionsList.length>0" class="transaction-section__tbody">
+      <TransactionItem v-for="(transactionItem,index) in transactionsList" :transactionItem="{...transactionItem,id:index+1}" :key="index" @delete-btn="$emit('modal-delete-transaction',index)" @edit-btn="$emit('modal-edit-transaction',index)"/>
       </tbody>
       <!--      when not exists any transaction-->
       <tbody v-else class="transaction-section__tbody">
@@ -97,12 +103,13 @@ import addIcon from '@/assets/add.png'
   text-transform: capitalize;
   font-size: 1.5rem;
 }
-.transaction-section__img{
+
+.transaction-section__img {
   width: 1.8rem;
   height: 1.8rem;
 }
 
-.transaction-section__cell-empty{
+.transaction-section__cell-empty {
   border: 1px solid var(--color_495057);
   padding: 0.75rem;
   font-size: .9rem;

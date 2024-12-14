@@ -7,8 +7,9 @@ defineProps({
   inputId: {
     type: String,
     required: true,
-  },
+  }
 })
+const model =defineModel()
 </script>
 
 <template>
@@ -18,6 +19,7 @@ defineProps({
         type="text"
         :id="inputId"
         class="form-input__input"
+        v-model="model"
     />
   </div>
 </template>
